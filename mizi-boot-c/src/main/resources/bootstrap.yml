@@ -1,0 +1,22 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka/
+server:
+  port: 9103
+spring:
+  application:
+    name: service-hi-c
+
+hystrix:
+  command:
+      default:
+        execution:
+          isolation:
+            thread:
+              timeoutInMilliseconds: 1000
+feign:
+  hystrix:
+    enabled: true
+    #enabled:false
+

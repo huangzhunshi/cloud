@@ -1,0 +1,20 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka/
+server:
+  port: 9001
+spring:
+  application:
+    name: service-zuul
+zuul:
+  add-host-header: true
+  routes:
+    api-a:
+      path: /hi-a/**
+      serviceId: service-hi-a
+      custom-sensitive-headers: true
+    api-b:
+      path: /hi-b/**
+      serviceId: service-hi-b
+      custom-sensitive-headers: true
