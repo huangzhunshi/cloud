@@ -8,6 +8,11 @@ spring:
   application:
     name: service-hi-c
 
+endpoints:
+  shutdown:
+    sensitive: false
+    enabled: true
+
 hystrix:
   command:
       default:

@@ -1,6 +1,11 @@
 server:
   port: 9000
 
+endpoints:
+  shutdown:
+    sensitive: false
+    enabled: true
+
 eureka:
   instance:
     hostname: localhost
