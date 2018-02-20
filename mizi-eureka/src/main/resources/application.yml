@@ -5,6 +5,8 @@ endpoints:
   shutdown:
     sensitive: false
     enabled: true
+## curl -X POST http://127.0.0.1:9000/shutdown  服务下线命令
+
 
 eureka:
   instance:

@@ -2,6 +2,12 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:9000/eureka/
+endpoints:
+  shutdown:
+    sensitive: false
+    enabled: true
+## curl -X POST http://127.0.0.1:9100/shutdown  服务下线命令
+
 server:
   port: 9100
 spring:
