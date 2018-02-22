@@ -13,6 +13,12 @@ endpoints:
 #spring:
 #  application:
 #    name: service-hi-a
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:9000/eureka/
+
+#设置配置中心
 spring:
   application:
     name: service-hi-a
@@ -21,8 +27,5 @@ spring:
       profile: dev
       label: master
       uri: http://127.0.0.1:9002/
-      name: mizi-boot-a
-#eureka:
-#  client:
-#    serviceUrl:
-#      defaultZone: http://localhost:9000/eureka/
+      name: hia
+
