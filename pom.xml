@@ -11,6 +11,7 @@
     <module>mizi-boot-b</module>
     <module>mizi-eureka</module>
       <module>mizi-boot-c</module>
+    <module>mizi-config</module>
   </modules>
   <packaging>pom</packaging>
 
