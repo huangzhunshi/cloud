@@ -4,9 +4,11 @@ spring:
       server:
         git:
           #password: your password
-          searchPaths: respo
-          uri: https://github.com/forezp/SpringcloudConfig/
+#          searchPaths: respo
+#          uri: https://github.com/forezp/SpringcloudConfig/
           #username: your username
+           searchPaths: config
+           uri: https://github.com/huangzhunshi/cloud/
       label: master
   application:
     name: config-server
