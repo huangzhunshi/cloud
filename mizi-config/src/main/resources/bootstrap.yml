@@ -23,7 +23,7 @@ eureka:
 #    config:
 #      profile: dev
 #      label: master
-#      uri: http://localhost:9001/
+#      uri: http://localhost:9002/
 #  application:
 #    name: config-client
 #server:
