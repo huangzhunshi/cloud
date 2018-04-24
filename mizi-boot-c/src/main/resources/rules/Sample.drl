@@ -17,6 +17,6 @@ rule "GoodBye"
     when
         Message( status == Message.GOODBYE, myMessage : message )
     then
-        System.out.println( myMessage );
+        System.out.println( "GoodBye" );
 end
 
