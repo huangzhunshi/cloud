@@ -11,6 +11,9 @@ import static com.sun.btrace.BTraceUtils.timeMillis;
 import static java.sql.DriverManager.println;
 import static jdk.nashorn.internal.objects.Global.print;
 
+/**
+ * 性能检测工具 btrace
+ */
 @BTrace(unsafe=true)
 public class BtraceMain {
     @TLS

@@ -3,6 +3,9 @@ package com.zuul.bootc;
 
 import java.util.Random;
 
+/**
+ * 性能检测工具
+ */
 public class BtraceCase {
     public static Random random = new Random();
     public int size;
