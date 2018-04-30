@@ -24,14 +24,14 @@ public class ProducerApp {
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         Producer<String, String> procuder = new KafkaProducer<String, String>(props);
        // String topic = "test";
-            String value = " this is another message_";
+            String value = "java-sdk";
             ProducerRecord<String,String> record = new ProducerRecord<String, String>(topic,value);
         //procuder.send(record);
 
             procuder.send(record,new Callback() {
                 @Override
                 public void onCompletion(RecordMetadata metadata, Exception exception) {
-                    System.out.println("message send to partition " + metadata.partition() + ", offset: " + metadata.offset());
+                    System.out.println("java-sdk " + metadata.partition() + ", offset: " + metadata.offset());
                 }
             });
             System.out.println(" ----   success");
