@@ -7,6 +7,11 @@ server:
 spring:
   application:
     name: service-hi-c
+  spring:
+    elasticsearch:
+         jest:
+         uris: http://localhost:9200
+         read-timeout: 10000
 
 endpoints:
   shutdown:
