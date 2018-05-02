@@ -44,41 +44,4 @@ public class ProducerApp {
         test1.execMsgSend();
     }
 
-
-//    public static void main(String[] arg) {
-//        sendMsg("java-p");
-//        System.out.println("发送成功!!!!");
-//
-//
-//    }
-
-
-
-
-    /**
-     * 发送消息
-     * @param msg 消息内容
-     */
-    private static void sendMsg(String msg){
-        Properties props = new Properties();
-        props.put("bootstrap.servers", "192.168.146.128:9092");
-//        props.put("zookeeper.connect",
-//                "192.168.146.128:2181");// 声明zk
-//        props.put("serializer.class", StringEncoder.class.getName());
-//        props.put("metadata.broker.list",
-//                "192.168.146.128:9092");
-//
-//        props.put("acks", "all");
-//        props.put("retries", 0);
-//        props.put("batch.size", 16384);
-//        props.put("linger.ms", 1);
-//        props.put("buffer.memory", 33554432);
-        props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-//        //生产者发送消息
-
-        Producer<String, String> procuder = new KafkaProducer<String,String>(props);
-        ProducerRecord<String, String> pmsg = new ProducerRecord<String, String>(topic, msg);
-        procuder.send(pmsg);
-    }
 }
