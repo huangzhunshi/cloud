@@ -183,6 +183,10 @@
         </dependency>
 -->
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
         <!--Google的json转换插件gson-->
         <dependency>
             <groupId>com.google.code.gson</groupId>
