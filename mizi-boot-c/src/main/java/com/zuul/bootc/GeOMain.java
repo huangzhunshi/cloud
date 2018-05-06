@@ -93,4 +93,14 @@ public class GeOMain {
         }
 
     }
+
+    public Integer testCeshi()  {
+        System.out.println("testCeshi");
+        return 100;
+    }
+
+    public String testString(){
+        System.out.println("testString");
+        return "haha";
+    }
 }
