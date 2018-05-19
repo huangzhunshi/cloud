@@ -2,6 +2,7 @@ package com.zuul.bootc;
 
 
 import com.google.gson.GsonBuilder;
+import com.zuul.bootc.drools.model.Product;
 import io.searchbox.client.JestClient;
 import io.searchbox.client.JestClientFactory;
 import io.searchbox.client.JestResult;
@@ -11,6 +12,8 @@ import io.searchbox.core.BulkResult;
 import io.searchbox.core.Index;
 import io.searchbox.core.Search;
 import io.searchbox.indices.CreateIndex;
+import lombok.Builder;
+import lombok.Data;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
 import org.apache.http.entity.ContentType;
@@ -25,17 +28,91 @@ import org.elasticsearch.client.RestClientBuilder;
 
 import java.io.IOException;
 
+import java.security.PublicKey;
+import java.util.Arrays;
 import java.util.Collections;
-
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 
 public class ESTest {
+
+    @Data
+    @Builder
+    public static class User<T,V>{
+        private T t;
+        private V v;
+
+        public User(T t, V v) {
+            this.t = t;
+            this.v = v;
+        }
+
+        public void say(){
+            System.out.println(t);
+            System.out.println(v);
+        }
+    }
+
+    public static void eval(List<Integer> list, Predicate<Integer> predicate) {
+        for(Integer n: list) {
+            if(predicate.test(n)) {
+                //可以将满足条件的参数返回，这里只做输出
+                System.out.print(n + " ");
+            }
+        }
+    }
+
+    public static boolean perdicateTest(Product p,Predicate<Product> productPredicate){
+        if(productPredicate.test(p)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public static  <T> void abc(T a){
+        System.out.println(a);
+    }
+
     public static void main(String arg[]) throws Exception {
+
+        User<Object, Object> aaa= User.builder().t("huangzhun").v(10000).build();
+        aaa.say();
+        //abc(10000);
+
+//        Product product=new Product();
+//        product.setDiscount(100);
+//        product.setType("1");
+//        boolean blean= perdicateTest(product,a->(a.getDiscount()>1000));
+//        System.out.println(blean);
+//        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+//        //eval(list,a->true);
+//
+//        eval(list,a->a<3);
+//        Integer a=1000;
+//        Integer b= Optional.ofNullable(a).orElse(0);
+//        System.out.println(b);
+//
+//        Product bbb=new Product();
+//        Optional<Product> product=Optional.of(bbb);
+
+
+//        Optional.ofNullable(a).map(b->b).orElse(0);
+//        System.out.println(a);a
+
+//       User<Integer,String > user=new User(12,"huangzhun");
+//
+//       user.say();
+
+
+
 //        for (String a:arg
 //             ) {
 //            System.out.println(a);
 //        }
-        System.out.println(arg[0]);
+//        System.out.println(arg[0]);
        // System.out.println("xxxx001");
 
     }

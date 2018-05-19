@@ -6,6 +6,15 @@ package com.zuul.bootc.drools.model;
  */
 public class Product {
 
+    public Product(String type, int discount) {
+        this.type = type;
+        this.discount = discount;
+    }
+
+    public Product(){
+
+    }
+
     /**
      * 钻石
      */

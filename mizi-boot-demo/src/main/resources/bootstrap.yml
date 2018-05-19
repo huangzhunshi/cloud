@@ -1,0 +1,43 @@
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:9000/eureka/
+endpoints:
+  shutdown:
+    sensitive: false
+    enabled: true
+## curl -X POST http://127.0.0.1:9100/shutdown  服务下线命令
+
+server:
+  port: 8081
+spring:
+  application:
+    name: springboot
+  db:
+      driver: com.mysql.jdbc.Driver
+      url: jdbc:mysql://192.168.146.128:3306/canal_test?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+      username: root
+      password: 222222
+      maxActive: 400
+      maxWait: 100
+      initialSize: 5
+      timeBetweenEvictionRunsMillis: 60000
+      maxOpenPreparedStatementPerConnectionSize: 100
+      minEvictableIdleTimeMillis: 300000
+      minIdle: 5
+      validationQuery: 'select version()'
+      testWhileIdle: false
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      connectionProperties: 'druid.stat.mergeSql:true;druid.stat.slowSqlMillis:5000'
+      filters: stat,slf4j
+
+
+logging:
+  level:
+    root: INFO
+    org.hibernate: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+    com.springms: DEBUG

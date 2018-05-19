@@ -20,7 +20,7 @@ import java.util.List;
 
 public class DemoApp {
     public static void main(String[] arg) throws IOException {
-//        System.out.println("xxxx");
+        //System.out.println("xxxx");
         //createUserIndex();
         //delUserIndex();
         //addUserDoc();
@@ -28,7 +28,7 @@ public class DemoApp {
         //delUserDoc();
         //getUserDoc();
         //searchUserDoc();
-        pageUserDocList();
+        //pageUserDocList();
     }
 
 
