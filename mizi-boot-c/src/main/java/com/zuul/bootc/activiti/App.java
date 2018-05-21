@@ -39,17 +39,25 @@ public class App {
         getTaskById();
     }
 
+    /**
+     * 获取流程下的任务
+     */
     public static void getTaskById(){
         ProcessEngine processEngine = ProcessEngineConfiguration
                 .createProcessEngineConfigurationFromResource("activiti.cfg.xml").buildProcessEngine();
         //List<HistoricTaskInstance> list=processEngine.getHistoryService().createHistoricTaskInstanceQuery().list();
 
-        List<ProcessInstance> list= processEngine.getRuntimeService().createProcessInstanceQuery()
-                .processDefinitionId("25005").list();
+        List<Task> list= processEngine.getTaskService().createTaskQuery().taskId("25005").list();
+//        List<ProcessInstance> list= processEngine.getRuntimeService().createProcessInstanceQuery()
+//                .processDefinitionId("25005").list();
         if(list==null||list.size()==0){
             System.out.print("无数据");
             return;
         }
+        list.stream().forEach(task -> {
+            System.out.println(task.getName());
+            System.out.println(task.getAssignee());
+        });
 
     }
 
