@@ -11,6 +11,7 @@ import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -36,7 +37,10 @@ public class App {
         //startProcessInstance(); 25001
         //findTask();
         //completeTask();
-        getTaskById();
+        //getTaskById();
+
+
+
     }
 
     /**
