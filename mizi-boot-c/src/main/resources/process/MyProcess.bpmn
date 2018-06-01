@@ -2,8 +2,8 @@
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://www.activiti.org/test" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.w3.org/1999/XPath" id="m1526792269774" name="" targetNamespace="http://www.activiti.org/test" typeLanguage="http://www.w3.org/2001/XMLSchema">
   <process id="myProcess" isClosed="false" isExecutable="true" processType="None">
     <startEvent id="start" name="开始"/>
-    <userTask activiti:assignee="张三" activiti:exclusive="true" id="submit" name="提交申请"/>
-    <userTask activiti:exclusive="true" id="apply" name="上级审批"/>
+    <userTask activiti:assignee="#{userId}" activiti:candidateUsers="#{userids}" activiti:exclusive="true" id="submit" name="提交申请"/>
+    <userTask activiti:assignee="#{userId}" activiti:candidateUsers="#{userids}" activiti:exclusive="true" id="apply" name="上级审批"/>
     <endEvent id="end" name="结束"/>
     <sequenceFlow id="_6" sourceRef="start" targetRef="submit"/>
     <sequenceFlow id="_7" sourceRef="submit" targetRef="apply"/>
@@ -24,13 +24,13 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="apply" id="Shape-apply">
-        <omgdc:Bounds height="55.0" width="85.0" x="165.0" y="235.0"/>
+        <omgdc:Bounds height="55.0" width="85.0" x="160.0" y="240.0"/>
         <bpmndi:BPMNLabel>
           <omgdc:Bounds height="55.0" width="85.0" x="0.0" y="0.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="end" id="Shape-end">
-        <omgdc:Bounds height="32.0" width="32.0" x="180.0" y="325.0"/>
+        <omgdc:Bounds height="32.0" width="32.0" x="185.0" y="335.0"/>
         <bpmndi:BPMNLabel>
           <omgdc:Bounds height="32.0" width="32.0" x="0.0" y="0.0"/>
         </bpmndi:BPMNLabel>
@@ -43,15 +43,15 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_7" id="BPMNEdge__7" sourceElement="submit" targetElement="apply">
-        <omgdi:waypoint x="202.5" y="190.0"/>
-        <omgdi:waypoint x="202.5" y="235.0"/>
+        <omgdi:waypoint x="200.0" y="190.0"/>
+        <omgdi:waypoint x="200.0" y="240.0"/>
         <bpmndi:BPMNLabel>
           <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_8" id="BPMNEdge__8" sourceElement="apply" targetElement="end">
-        <omgdi:waypoint x="196.0" y="290.0"/>
-        <omgdi:waypoint x="196.0" y="325.0"/>
+        <omgdi:waypoint x="201.0" y="295.0"/>
+        <omgdi:waypoint x="201.0" y="335.0"/>
         <bpmndi:BPMNLabel>
           <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
         </bpmndi:BPMNLabel>

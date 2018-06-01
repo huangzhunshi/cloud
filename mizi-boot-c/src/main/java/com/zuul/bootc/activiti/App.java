@@ -16,6 +16,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -38,8 +39,71 @@ public class App {
         //findTask();
         //completeTask();
         //getTaskById();
+        //list();
+        //start();
+        //list();
+        //completeUser();
+        //processDeteal();
+    }
 
+    public static void processDeteal() {
 
+        ProcessEngine processEngine = ProcessEngineConfiguration
+                .createProcessEngineConfigurationFromResource("activiti.cfg.xml").buildProcessEngine();
+        //processEngine.getRuntimeService().getP
+
+        List<Task> tasks = processEngine.getTaskService().createTaskQuery().processInstanceId("75001").list();
+        tasks.forEach(x->{
+            System.out.println(x.getId());
+            System.out.println(x.getAssignee());
+            System.out.println(x.getName());
+        });
+
+    }
+
+    public static void completeUser(){
+        ProcessEngine processEngine = ProcessEngineConfiguration
+                .createProcessEngineConfigurationFromResource("activiti.cfg.xml").buildProcessEngine();
+        Map<String, Object> variables = new HashMap<String, Object>();
+        variables.put("userids", "小王");
+        variables.put("userId", "小王");
+        processEngine.getTaskService().complete("67502",variables);
+    }
+
+    public static void list(){
+        ProcessEngine processEngine = ProcessEngineConfiguration
+                .createProcessEngineConfigurationFromResource("activiti.cfg.xml").buildProcessEngine();
+
+        List<Task> list= processEngine.getTaskService().createTaskQuery().taskAssignee("小李").list();
+        list.forEach(x->{
+            System.out.println(x.getId());
+            System.out.println(x.getProcessDefinitionId());
+            System.out.println(x.getAssignee());
+            System.out.println(x.getName());
+        });
+    }
+
+    public static void start(){
+        ProcessEngine processEngine = ProcessEngineConfiguration
+                .createProcessEngineConfigurationFromResource("activiti.cfg.xml").buildProcessEngine();
+        // 流程定义的key
+        String processDefinitionKey = "myProcess";
+        //ProcessInstance pi = processEngine.getRuntimeService().startProcessInstanceByKey(processDefinitionKey);
+        Map<String, Object> variables = new HashMap<String, Object>();
+
+        variables.put("userids", "小李");
+        variables.put("userId", "小李");
+        processEngine.getRuntimeService().startProcessInstanceByKey(processDefinitionKey,variables);
+    }
+
+    public static void buildProcessEngine(){
+        ProcessEngine processEngine = ProcessEngineConfiguration
+                .createProcessEngineConfigurationFromResource("activiti.cfg.xml").buildProcessEngine();
+        // 流程定义的key
+        String processDefinitionKey = "myProcess";
+        ProcessInstance pi = processEngine.getRuntimeService()// 与正在执行
+                // 的流程实例和执行对象相关的Service
+                .startProcessInstanceByKey(processDefinitionKey);
 
     }
 
@@ -80,8 +144,6 @@ public class App {
      * 查看任务列表
      */
     public static void findTask(){
-
-
 
         ProcessEngine processEngine = ProcessEngineConfiguration
                 .createProcessEngineConfigurationFromResource("activiti.cfg.xml").buildProcessEngine();
