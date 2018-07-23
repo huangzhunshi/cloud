@@ -78,8 +78,8 @@ public class ESTest {
 
     public static void main(String arg[]) throws Exception {
 
-        User<Object, Object> aaa= User.builder().t("huangzhun").v(10000).build();
-        aaa.say();
+//        User<Object, Object> aaa= User.builder().t("huangzhun").v(10000).build();
+//        aaa.say();
         //abc(10000);
 
 //        Product product=new Product();
