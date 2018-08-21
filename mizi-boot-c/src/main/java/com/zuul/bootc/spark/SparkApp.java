@@ -16,7 +16,7 @@ import java.util.List;
 
 public class SparkApp {
     public static void main(String[] args) throws IOException {
-        SparkConf sparkConf = new SparkConf().setAppName("JavaWordCount");
+        SparkConf sparkConf = new SparkConf().setAppName("JavaWordCount").setMaster("local");
         JavaSparkContext javaSparkContext=new JavaSparkContext(sparkConf);
         JavaRDD<String> lines=javaSparkContext.textFile("file:///tmp/bb");
         /**

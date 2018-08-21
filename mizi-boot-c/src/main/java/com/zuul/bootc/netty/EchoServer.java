@@ -13,10 +13,13 @@ import java.net.InetSocketAddress;
 public class EchoServer {
 
     public static void main(String[] args) throws InterruptedException {
-        NioEventLoopGroup group = new NioEventLoopGroup(); //3
+
+
+        NioEventLoopGroup boss=new NioEventLoopGroup(1);
+        NioEventLoopGroup works = new NioEventLoopGroup(6);
         ServerBootstrap b = new ServerBootstrap();
       //  b.group(group,group);
-b.group(group).channel(NioServerSocketChannel.class).localAddress(new InetSocketAddress(9001)).
+b.group(boss,works).channel(NioServerSocketChannel.class).localAddress(new InetSocketAddress(9001)).
         childHandler(new ChannelInitializer<SocketChannel>() {
             @Override
             protected void initChannel(SocketChannel socketChannel) throws Exception {
@@ -28,6 +31,8 @@ b.group(group).channel(NioServerSocketChannel.class).localAddress(new InetSocket
         ChannelFuture f = b.bind().sync();            //8
         System.out.println(EchoServer.class.getName() + " started and listen on " + f.channel().localAddress());
         f.channel().closeFuture().sync();
+
+
 
     }
 }

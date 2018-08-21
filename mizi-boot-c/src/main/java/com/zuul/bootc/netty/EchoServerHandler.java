@@ -9,6 +9,10 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import org.jboss.netty.util.CharsetUtil;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 @ChannelHandler.Sharable
 public class EchoServerHandler extends ChannelInboundHandlerAdapter {
     @Override
@@ -17,6 +21,17 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
         ByteBuf in = (ByteBuf) msg;
         System.out.println("Server received: " + in.toString(CharsetUtil.UTF_8));        //2
         ctx.write(in);
+
+
+
+        ctx.write(Unpooled.copiedBuffer("server send", CharsetUtil.UTF_8));
+
+    }
+
+    @Override
+    public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
+        OnlineUserMap.getUserOnLine().put( UUID.randomUUID().toString(),ctx);
+        super.channelRegistered(ctx);
     }
 
     @Override

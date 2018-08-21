@@ -7,8 +7,12 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import scala.collection.mutable.HashTable;
 
 import java.net.InetSocketAddress;
+import java.util.Hashtable;
+import java.util.TreeMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class EchoClient {
     /**
@@ -17,6 +21,10 @@ public class EchoClient {
      * @throws InterruptedException
      */
     public static void main(String[] args) throws InterruptedException {
+
+//        ConcurrentHashMap<String,Integer> aaa=new ConcurrentHashMap<String ,String>()
+//
+//        ConcurrentHashMap a;
         EventLoopGroup group = new NioEventLoopGroup();
         try {
             Bootstrap b = new Bootstrap();                //1

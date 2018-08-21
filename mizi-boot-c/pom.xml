@@ -260,6 +260,20 @@
             <artifactId>spark-sql_${scala.version}</artifactId>
             <version>${spark.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-catalyst -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-catalyst_${scala.version}</artifactId>
+            <version>${spark.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-sql -->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.spark</groupId>-->
+            <!--<artifactId>spark-sql_2.10</artifactId>-->
+            <!--<version>2.2.2</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-hive_${scala.version}</artifactId>
@@ -382,6 +396,30 @@
             <artifactId>gson</artifactId>
             <version>2.3</version>
         </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy</artifactId>
+            <version>1.8.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy</artifactId>
+            <version>1.8.3</version>
+        </dependency>
 
+        <!--jmh-->
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>1.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>1.9</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--jmh-->
     </dependencies>
+
 </project>
