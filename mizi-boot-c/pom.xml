@@ -420,6 +420,21 @@
             <scope>provided</scope>
         </dependency>
         <!--jmh-->
+       <!--asm-->
+        <!--<dependency>-->
+        <!--<groupId>org.ow2.asm</groupId>-->
+        <!--<artifactId>asm-all</artifactId>-->
+        <!--<version>5.1</version>-->
+        <!--</dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/asm/asm -->
+        <!--<dependency>-->
+            <!--<groupId>asm</groupId>-->
+            <!--<artifactId>asm</artifactId>-->
+            <!--<version>3.3.1</version>-->
+        <!--</dependency>-->
+        <!--asm-->
+
     </dependencies>
 
 </project>
