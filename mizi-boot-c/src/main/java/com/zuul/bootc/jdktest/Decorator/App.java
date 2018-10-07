@@ -35,8 +35,13 @@ public class App {
 
         hzB.setiHz(hzA);
 
+        hzB.Op();
+
+        System.out.println("____________");
+
         HzC hzC=new HzC();
         hzC.setiHz(hzB);
+
 
         hzC.Op();
 
