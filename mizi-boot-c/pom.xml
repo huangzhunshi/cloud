@@ -435,6 +435,18 @@
         </dependency>
         <!--redis-->
 
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.4.9</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.sgroschupf</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>0.1</version>
+        </dependency>
+
+
         <!--asm-->
         <!--<dependency>-->
         <!--<groupId>org.ow2.asm</groupId>-->
