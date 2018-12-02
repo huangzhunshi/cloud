@@ -13,7 +13,19 @@ import java.util.List;
 public class AppMain {
     public static void main(String[] args) throws IOException {
 
+
+
+//        new Thread(() -> {
+//            try {
+//                watchnode();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }).start();
+
         watchnode();
+        System.in.read();
+
     }
 
     /**
@@ -41,7 +53,6 @@ public class AppMain {
 
             }
         });
-        System.in.read();
 
     }
 
