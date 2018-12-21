@@ -26,7 +26,7 @@ public class App {
     //驱动程序名
     static String driver = "com.mysql.jdbc.Driver";
     //URL指向要访问的数据库名mydata
-    static String url = "jdbc:mysql://192.168.146.128:3306/canal_test";
+    static String url = "jdbc:mysql://127.0.0.1:3306/question";
     //MySQL配置时的用户名
     static String user = "root";
     //MySQL配置时的密码
@@ -34,7 +34,7 @@ public class App {
 
     public static void main(String[] args) {
         //createActivitiTable();
-        //fy_test();
+        fy_test();
         //startProcessInstance(); 25001
         //findTask();
         //completeTask();
