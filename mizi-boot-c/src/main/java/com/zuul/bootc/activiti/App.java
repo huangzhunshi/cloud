@@ -1,11 +1,11 @@
 package com.zuul.bootc.activiti;
 
 
+import org.activiti.engine.HistoryService;
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngineConfiguration;
-import org.activiti.engine.history.HistoricDetail;
-import org.activiti.engine.history.HistoricIdentityLink;
-import org.activiti.engine.history.HistoricTaskInstance;
+import org.activiti.engine.RuntimeService;
+import org.activiti.engine.history.*;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
@@ -34,9 +34,10 @@ public class App {
 
     public static void main(String[] args) {
         //createActivitiTable();
-        fy_test();
-        //startProcessInstance(); 25001
+        //fy_test();25005
+        //startProcessInstance(); //25001
         //findTask();
+        findHistoryProce();
         //completeTask();
         //getTaskById();
         //list();
@@ -65,8 +66,8 @@ public class App {
         ProcessEngine processEngine = ProcessEngineConfiguration
                 .createProcessEngineConfigurationFromResource("activiti.cfg.xml").buildProcessEngine();
         Map<String, Object> variables = new HashMap<String, Object>();
-        variables.put("userids", "小王");
-        variables.put("userId", "小王");
+//        variables.put("userids", "小王");
+//        variables.put("userId", "小王");
         processEngine.getTaskService().complete("67502",variables);
     }
 
@@ -74,12 +75,13 @@ public class App {
         ProcessEngine processEngine = ProcessEngineConfiguration
                 .createProcessEngineConfigurationFromResource("activiti.cfg.xml").buildProcessEngine();
 
-        List<Task> list= processEngine.getTaskService().createTaskQuery().taskAssignee("小李").list();
+        List<Task> list= processEngine.getTaskService().createTaskQuery().taskAssignee("yihui1").list();
         list.forEach(x->{
             System.out.println(x.getId());
             System.out.println(x.getProcessDefinitionId());
             System.out.println(x.getAssignee());
             System.out.println(x.getName());
+            System.out.println("-------------");
         });
     }
 
@@ -107,6 +109,8 @@ public class App {
 
     }
 
+
+
     /**
      * 获取流程下的任务
      */
@@ -115,7 +119,7 @@ public class App {
                 .createProcessEngineConfigurationFromResource("activiti.cfg.xml").buildProcessEngine();
         //List<HistoricTaskInstance> list=processEngine.getHistoryService().createHistoricTaskInstanceQuery().list();
 
-        List<Task> list= processEngine.getTaskService().createTaskQuery().taskId("25005").list();
+        List<Task> list= processEngine.getTaskService().createTaskQuery().taskId("20002").list();
 //        List<ProcessInstance> list= processEngine.getRuntimeService().createProcessInstanceQuery()
 //                .processDefinitionId("25005").list();
         if(list==null||list.size()==0){
@@ -135,9 +139,58 @@ public class App {
     public static void completeTask(){
         ProcessEngine processEngine = ProcessEngineConfiguration
                 .createProcessEngineConfigurationFromResource("activiti.cfg.xml").buildProcessEngine();
-        processEngine.getTaskService().complete("17502");
+        processEngine.getTaskService().complete("25005");
         System.out.println("完成任务");
 
+    }
+
+
+    /**
+     * 历史审批
+     */
+    public static void findHistoryProce(){
+        ProcessEngine processEngine = ProcessEngineConfiguration
+                .createProcessEngineConfigurationFromResource("activiti.cfg.xml").buildProcessEngine();
+
+        List<HistoricTaskInstance> list= processEngine.getHistoryService().createHistoricTaskInstanceQuery().processInstanceId("22501").list();
+        for (HistoricTaskInstance task:list
+             ) {
+            System.out.println(task.getAssignee());
+            System.out.println(task.getName());
+            System.out.println("----------------------");
+        }
+        //        List<HistoricProcessInstance> list= processEngine.getHistoryService().createHistoricProcessInstanceQuery().list();
+//        for (HistoricProcessInstance historicProcessInstance:list
+//             ) {
+//            System.out.println(historicProcessInstance.getId());
+//
+//
+//
+//        }
+//        List<HistoricActivityInstance> list=processEngine.getHistoryService().createHistoricActivityInstanceQuery().activityInstanceId("17504").list();
+//        for(HistoricActivityInstance r : list){
+//            System.out.println(r.getActivityId());
+//            System.out.println(r.getActivityName());
+//            System.out.println(r.getAssignee());
+//            System.out.println(r.getActivityType());
+//            System.out.println(r.getTaskId());
+//
+//            System.out.println("-------------------");
+//
+//        }
+
+//        List<HistoricTaskInstance> list=processEngine.getHistoryService().createHistoricTaskInstanceQuery().taskId("17504").list();
+//        System.out.println(list.size());
+//        for (HistoricTaskInstance r:list
+//             ) {
+//
+//            System.out.println(r.getAssignee());
+//            System.out.println(r.getClaimTime());
+//
+//            System.out.println(r.getDeleteReason());
+//
+//            System.out.println("-------------------");
+//        }
     }
 
     /**
@@ -148,7 +201,7 @@ public class App {
         ProcessEngine processEngine = ProcessEngineConfiguration
                 .createProcessEngineConfigurationFromResource("activiti.cfg.xml").buildProcessEngine();
         List<Task> list=processEngine.getTaskService().createTaskQuery()
-                //.taskAssignee("张三")
+                .taskAssignee("yihui1")
                 .list();
 
 
@@ -165,6 +218,7 @@ public class App {
             System.out.println("执行对象id:"+task.getExecutionId());
             System.out.println("流程定义id:"+task.getProcessDefinitionId());
 
+            System.out.println("-------------------------------");
 
         }
     }
@@ -175,7 +229,9 @@ public class App {
                     .createProcessEngineConfigurationFromResource("activiti.cfg.xml").buildProcessEngine();
             // 流程定义的key
             String processDefinitionKey = "myProcess";
+            RuntimeService runtimeService= processEngine.getRuntimeService();
             ProcessInstance pi = processEngine.getRuntimeService()// 与正在执行
+                    //.startProcessInstanceById("1");
                     // 的流程实例和执行对象相关的Service
                     .startProcessInstanceByKey(processDefinitionKey); // 使用流程定义的key启动流程实例,key对应helloworld.bpmn文件中id的属性值，使用key值启动，默认是按照最新版本的流程定义启动
             System.out.println("流程实例ID:" + pi.getId());
@@ -196,10 +252,11 @@ public class App {
 //        Deployment deployment = processEngine.getRepositoryService().createDeployment().name("请假程序")
 //                .addClasspathResource("activiti/MyProcess.bpmn").addClasspathResource("activiti/MyProcess.png").deploy();
 
-        Deployment deployment = processEngine.getRepositoryService().createDeployment().name("请假程序")
+        Deployment deployment = processEngine.getRepositoryService().createDeployment().name("请假程序").key("qingjia")
                 .addClasspathResource("process/MyProcess.bpmn").deploy();
 
         System.out.println(deployment.getId());
+        System.out.println(deployment.getKey());
         System.out.println(deployment.getName());
     }
 

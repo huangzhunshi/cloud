@@ -2,8 +2,8 @@
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://www.activiti.org/test" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.w3.org/1999/XPath" id="m1526792269774" name="" targetNamespace="http://www.activiti.org/test" typeLanguage="http://www.w3.org/2001/XMLSchema">
   <process id="myProcess" isClosed="false" isExecutable="true" processType="None">
     <startEvent id="start" name="开始"/>
-    <userTask activiti:assignee="#{userId}" activiti:candidateUsers="#{userids}" activiti:exclusive="true" id="submit" name="提交申请"/>
-    <userTask activiti:assignee="#{userId}" activiti:candidateUsers="#{userids}" activiti:exclusive="true" id="apply" name="上级审批"/>
+    <userTask activiti:assignee="yihui1" activiti:candidateUsers="yihui1" activiti:exclusive="true" id="submit" name="提交申请"/>
+    <userTask activiti:assignee="yihui2" activiti:candidateUsers="yihui2" activiti:exclusive="true" id="apply" name="上级审批"/>
     <endEvent id="end" name="结束"/>
     <sequenceFlow id="_6" sourceRef="start" targetRef="submit"/>
     <sequenceFlow id="_7" sourceRef="submit" targetRef="apply"/>
