@@ -70,7 +70,7 @@ public class App2 {
     private static void startDeployment(){
         ProcessEngine processEngine = ProcessEngineConfiguration.createProcessEngineConfigurationFromResource("activiti.cfg.xml").buildProcessEngine();
         //processEngine.getRuntimeService().startProcessInstanceById("myProcess:4:22504");
-       processEngine.getRuntimeService().startProcessInstanceByKey("myProcess");
+        processEngine.getRuntimeService().startProcessInstanceByKey("myProcess");
         // processEngine.getRuntimeService().startProcessInstanceByKey()
     }
 
