@@ -14,15 +14,25 @@ public class App3 {
     public static void main(String[] args){
 //        deployProcess();
 //        startProcess();
-        taskList();
+      //  taskList();
 //        completeTask();
 
 //        deleteProcess();
 
+ //       completehi2();
+
     //-----------------------------------------
 
 //        deployhi2();
-//        starthi2();
+  //      starthi2();
+    }
+
+    public static void completehi2(){
+        ProcessEngine processEngine = ProcessEngineConfiguration.createProcessEngineConfigurationFromResource("activiti.cfg.xml").buildProcessEngine();
+//        processEngine.getTaskService().setVariable("97505","审批意见","同意,支持");
+        processEngine.getTaskService().setVariableLocal("97505","意见","不知道怎么写");
+
+        processEngine.getTaskService().complete("97505");
     }
 
 
